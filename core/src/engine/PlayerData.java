@@ -18,6 +18,8 @@ public class PlayerData {
 	private final Preferences pref;
 	
 	private int goldenBars, dollars, experience, location, mission;
+	private boolean soundsEnableStatus, musicEnableStatus;
+
 	private Array<Soldier> team;
 	private Weapon[] inventory;
 	private Location[] locations;
@@ -58,7 +60,10 @@ public class PlayerData {
 		location = pref.getInteger("l", 0);
 		mission = pref.getInteger("m", 0);
 		locations = json.fromJson(Location[].class, loader.getFileHandle("locations.txt"));
-		
+
+		soundsEnableStatus = pref.getBoolean("enbl_s", true);
+		musicEnableStatus = pref.getBoolean("enbl_m", true);
+
 		compareProgress(location, mission, locations);
 	}
 	
@@ -98,6 +103,18 @@ public class PlayerData {
 	public void setMapSenderTime(long value){
 		mapSenderTime = value;
 		pref.putLong("mst", value);
+		pref.flush();
+	}
+
+	public void saveSoundsEnableStatus(boolean enabled){
+		soundsEnableStatus = enabled;
+		pref.putBoolean("enbl_s", enabled);
+		pref.flush();
+	}
+
+	public void saveMusicEnableStatus(boolean enabled){
+		musicEnableStatus = enabled;
+		pref.putBoolean("enbl_m", enabled);
 		pref.flush();
 	}
 
@@ -156,6 +173,14 @@ public class PlayerData {
 	
 	public Location[] getLocations() {
 		return locations;
+	}
+
+	public boolean getSoundsEnableStatus() {
+		return soundsEnableStatus;
+	}
+
+	public boolean getMusicEnableStatus() {
+		return musicEnableStatus;
 	}
 	
 	public void copyToInventory(Weapon[] duplicate){

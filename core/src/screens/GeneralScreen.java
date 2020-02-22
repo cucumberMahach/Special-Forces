@@ -78,7 +78,6 @@ public class GeneralScreen implements Screen{
 		
 		stage.addActor(stats);
 		stage.addActor(experienceBar);
-		//stage.addActor(energyBar);
 		stage.addActor(musicBtn);
 		stage.addActor(soundsBtn);
 		stage.addActor(helpBtn);
@@ -108,6 +107,7 @@ public class GeneralScreen implements Screen{
 	
 	private void updateGui(){
 		musicBtn.setIcon(SpecialForces.getInstance().sounds().isMusicEnabled() ? loader.getIcon("black_music") : loader.getIcon("black_music_off"));
+		soundsBtn.setIcon(SpecialForces.getInstance().sounds().isSoundsEnabled() ? loader.getIcon("black_sounds") : loader.getIcon("black_sounds_off"));
 	}
 	
 	public void hideLayers(){

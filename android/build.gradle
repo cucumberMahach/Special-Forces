@@ -18,7 +18,7 @@ android {
     }
     defaultConfig {
         applicationId "com.specialforces"
-        minSdkVersion 9
+        minSdkVersion 14//9
         targetSdkVersion 28
         versionCode 6
         versionName "1.5"
@@ -141,4 +141,8 @@ idea {
             }
         }
     }
+}
+
+dependencies {
+    compile 'com.google.android.gms:play-services-ads:10.2.4'
 }

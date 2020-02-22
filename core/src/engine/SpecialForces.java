@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 import controller.ControllerType;
+import engine.utils.advertise.AdHandler;
 import screens.ScreenType;
 
 public class SpecialForces extends Game {
@@ -35,6 +36,7 @@ public class SpecialForces extends Game {
 	private Sounds sounds;
 	private Loader loader;
 	private PlayerData playerData;
+	private AdHandler adHandler;
 	
 	private SpecialForces() {}
 
@@ -46,8 +48,8 @@ public class SpecialForces extends Game {
 		shaper = new ShapeRenderer();
 		loader = new Loader();
 		scrMng = new ScreenManager(loader, batch);
-		sounds = new Sounds(loader);
 		playerData = new PlayerData();
+		sounds = new Sounds(loader);
 		
 		loader.loadPrev();
 		screenManager().loadPrev();
@@ -60,6 +62,7 @@ public class SpecialForces extends Game {
 	public void loadingDone(){
 		loader.load();
 		playerData.load(loader);
+		sounds.loadSettings();
 		screenManager().load();
 	}
 	
@@ -105,6 +108,14 @@ public class SpecialForces extends Game {
 	
 	public ShapeRenderer getShaper(){
 		return shaper;
+	}
+
+	public void setAdHandler(AdHandler adHandler){
+		this.adHandler = adHandler;
+	}
+
+	public AdHandler getAdHandler(){
+		return adHandler;
 	}
 	
 	public static SpecialForces getInstance(){

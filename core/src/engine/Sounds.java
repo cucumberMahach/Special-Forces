@@ -36,6 +36,15 @@ public class Sounds {
 		tileSounds.put(14, "grass");
 		tileSounds.put(18, "step");
 	}
+
+	public void loadSettings(){
+		if (!SpecialForces.getInstance().playerData().getSoundsEnableStatus()){
+			toggleSounds();
+		}
+		if (!SpecialForces.getInstance().playerData().getMusicEnableStatus()){
+			toggleMusic();
+		}
+	}
 	
 	public void playStep(int tile){
 		String name = tileSounds.get(tile);
@@ -152,6 +161,7 @@ public class Sounds {
 	
 	public void toggleSounds(){
 		soundsEnabled = !soundsEnabled;
+		SpecialForces.getInstance().playerData().saveSoundsEnableStatus(soundsEnabled);
 	}
 	
 	public void toggleMusic(){
@@ -160,6 +170,7 @@ public class Sounds {
 			setVolumeAllMusic(0);
 		else
 			setVolumeAllMusic(1);
+		SpecialForces.getInstance().playerData().saveMusicEnableStatus(musicEnabled);
 	}
 	
 	public boolean isSoundsEnabled(){
