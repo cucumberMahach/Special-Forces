@@ -1,0 +1,198 @@
+[
+{
+	name: house
+	missions: [
+		{
+			name: mission 1
+			maps: [
+				h_m1
+			]
+			dollarsReward: 3000
+			experienceReward: 100
+			markX: 400
+			markY: 395
+			status: AVAILABLE
+		}
+		{
+			name: mission 2
+			maps: [
+				h_m2
+			]
+			dollarsReward: 3200
+			experienceReward: 120
+			markX: 500
+			markY: 170
+			status: LOCKED
+		}
+		{
+			name: mission 3
+			maps: [
+				h_m3
+			]
+			dollarsReward: 3400
+			experienceReward: 140
+			markX: 750
+			markY: 350
+			status: LOCKED
+		}
+		{
+			name: mission 4
+			maps: [
+				h_m4
+			]
+			dollarsReward: 3600
+			experienceReward: 160
+			markX: 850
+			markY: 100
+			status: LOCKED
+		}
+		{
+			name: mission 5
+			maps: [
+				h_m5
+			]
+			dollarsReward: 3800
+			experienceReward: 180
+			markX: 1060
+			markY: 370
+			status: LOCKED
+		}
+	]
+}
+{
+	name: city
+	missions: [
+		{
+			name: mission 1
+			maps: [
+				c_m1
+			]
+			dollarsReward: 4000
+			experienceReward: 200
+			markX: 400
+			markY: 395
+			status: LOCKED
+		}
+		{
+			name: mission 2
+			maps: [
+				c_m2
+			]
+			dollarsReward: 4200
+			experienceReward: 220
+			markX: 500
+			markY: 170
+			status: LOCKED
+		}
+		{
+			name: mission 3
+			maps: [
+				c_m3
+			]
+			dollarsReward: 4400
+			experienceReward: 240
+			markX: 750
+			markY: 350
+			status: LOCKED
+		}
+		{
+			name: mission 4
+			maps: [
+				c_m4
+			]
+			dollarsReward: 4600
+			experienceReward: 260
+			markX: 850
+			markY: 100
+			status: LOCKED
+		}
+		{
+			name: mission 5
+			maps: [
+				c_m5
+			]
+			dollarsReward: 4800
+			experienceReward: 280
+			markX: 1060
+			markY: 370
+			status: LOCKED
+		}
+	]
+}
+{
+	name: desert
+	missions: [
+		{
+			name: mission 1
+			maps: [
+				d_m1
+			]
+			dollarsReward: 5000
+			experienceReward: 300
+			markX: 400
+			markY: 395
+			status: LOCKED
+		}
+		{
+			name: mission 2
+			maps: [
+				d_m2
+			]
+			dollarsReward: 5200
+			experienceReward: 320
+			markX: 500
+			markY: 170
+			status: LOCKED
+		}
+		{
+			name: mission 3
+			maps: [
+				d_m3
+			]
+			dollarsReward: 5400
+			experienceReward: 340
+			markX: 750
+			markY: 350
+			status: LOCKED
+		}
+		{
+			name: mission 4
+			maps: [
+				d_m4
+			]
+			dollarsReward: 5600
+			experienceReward: 360
+			markX: 850
+			markY: 100
+			status: LOCKED
+		}
+		{
+			name: mission 5
+			maps: [
+				d_m5
+			]
+			dollarsReward: 5800
+			experienceReward: 380
+			markX: 1060
+			markY: 370
+			status: LOCKED
+		}
+	]
+}
+{
+	name: coming soon...
+	missions: [
+		{
+			name: mission 1
+			maps: [
+				coming
+			]
+			dollarsReward: 6000
+			experienceReward: 400
+			markX: 400
+			markY: 395
+			status: LOCKED
+		}
+	]
+}
+]
