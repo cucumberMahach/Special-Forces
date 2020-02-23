@@ -226,6 +226,7 @@ public class Loader {
 		assetManager.load(DIRECTORY + "sounds/end.mp3", Sound.class);
 		assetManager.load(DIRECTORY + "sounds/cash.mp3", Sound.class);
 		assetManager.load(DIRECTORY + "sounds/exp.mp3", Sound.class);
+		assetManager.load(DIRECTORY + "sounds/weapons/sniper_change.mp3", Sound.class);
 		assetManager.load(DIRECTORY + "music/menu.mp3", Music.class);
 	}
 
@@ -559,6 +560,7 @@ public class Loader {
 		sounds.put("complete", getSound("complete.mp3"));
 		sounds.put("end", getSound("end.mp3"));
 		sounds.put("cash", getSound("cash.mp3"));
+		sounds.put("change5", getSound("weapons/sniper_change.mp3"));
 
 		// music
 		music.put("menu", getMusic("menu.mp3"));

@@ -22,6 +22,7 @@ public abstract class CharacterActions {
 	private Vector2 vect;
 	
 	private Timer reloadTimer;
+	private Timer changeTimer;
 	
 	public CharacterActions(Character ch){
 		this.ch = ch;
@@ -32,11 +33,16 @@ public abstract class CharacterActions {
 		
 		reloadTimer = new Timer();
 		reloadTimer.setEvent(new ReloadEvent());
+
+		changeTimer = new Timer();
+		changeTimer.setInterval(0.3f);
+		changeTimer.setEvent(new ChangeEvent());
 	}
 	
 	public void update(float delta){
 		lastShoot += delta;
 		reloadTimer.update(delta);
+		changeTimer.update(delta);
 	}
 	
 	public void reload(){
@@ -118,6 +124,8 @@ public abstract class CharacterActions {
 		}
 		
 		SpecialForces.getInstance().sounds().playShoot(weapon);
+		((ChangeEvent) changeTimer.getEvent()).setWeapon(weapon);
+		changeTimer.start();
 		if (weapon.isEmpty())
 			ch.updatePose();
 	}
@@ -135,4 +143,17 @@ class ReloadEvent implements TimerEvent{
 		this.weapon = weapon;
 	}
 	
+}
+
+class ChangeEvent implements TimerEvent{
+	private Weapon weapon;
+
+	@Override
+	public void event() {
+		SpecialForces.getInstance().sounds().playChange(weapon);
+	}
+
+	public void setWeapon(Weapon weapon){
+		this.weapon = weapon;
+	}
 }

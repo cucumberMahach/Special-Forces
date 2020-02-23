@@ -132,8 +132,11 @@ public class Sounds {
 	}
 	
 	public void play(String soundName){
-		if (soundsEnabled)
-			sounds.get(soundName).play();
+		if (soundsEnabled) {
+			Sound s = sounds.get(soundName);
+			if (s != null)
+				s.play();
+		}
 	}
 	
 	public void playShoot(Weapon weapon){
@@ -141,6 +144,10 @@ public class Sounds {
 			play("empty");
 		else
 			play("shoot".concat(String.valueOf(weapon.getType().ordinal())));
+	}
+
+	public void playChange(Weapon weapon){
+		play("change" + weapon.getType().ordinal());
 	}
 	
 	public void playReload(WeaponType type){
