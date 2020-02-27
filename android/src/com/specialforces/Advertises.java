@@ -59,6 +59,7 @@ public class Advertises implements AdHandler {
         adView.loadAd(builder.build());
 
         adsViewHandler = new AdsViewHandler(adView);
+        showBanner(false);
     }
 
     private void showInterstitial() {
