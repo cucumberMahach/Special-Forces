@@ -1,6 +1,7 @@
 package screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -27,7 +28,7 @@ public class MenuScreen implements Screen{
 	private Loader loader;
 	private Stage stage, bgrStage;
 	private Image caption, sold1, sold2, sold3, sold4;
-	private Button playBtn, editorBtn, musicBtn, helpBtn, exitBtn;
+	private Button playBtn, editorBtn, musicBtn, helpBtn, exitBtn, fullscreenBtn;
 	private Label sendMapLab;
 	private boolean showFirstly = true;
 	private static final float BUTTON_SPACE = 20;
@@ -54,16 +55,20 @@ public class MenuScreen implements Screen{
 		
 		musicBtn = new Button(loader, ButtonType.MENU_ICON, "", ButtonIcon.MUSIC);
 		musicBtn.setIconScale(1.7f);
-		
-		musicBtn.setPosition(513, editorBtn.getY() - musicBtn.getHeight() - BUTTON_SPACE);
+		musicBtn.setPosition(editorBtn.getX(), editorBtn.getY() - musicBtn.getHeight() - BUTTON_SPACE);
 		musicBtn.addListener(new ToggleMusicEvent(musicBtn, loader));
-		helpBtn = new Button(loader, ButtonType.MENU_ICON, "", ButtonIcon.HELP);
-		helpBtn.setPosition(666, musicBtn.getY());
-		helpBtn.addListener(new HelpEvent());
 
 		exitBtn = new Button(loader, ButtonType.SMALL_RED, "", ButtonIcon.CLOSE);
 		exitBtn.setPosition(1198,641);
 		exitBtn.addListener(new MenuScreen.ExitEvent());
+
+		fullscreenBtn = new Button(loader, ButtonType.MENU_ICON, "", ButtonIcon.FULLSCREEN);
+		fullscreenBtn.setPosition(589, musicBtn.getY());
+		fullscreenBtn.addListener(new FullScreenEvent());
+
+		helpBtn = new Button(loader, ButtonType.MENU_ICON, "", ButtonIcon.HELP);
+		helpBtn.setPosition(735, fullscreenBtn.getY());
+		helpBtn.addListener(new HelpEvent());
 
 		stage.addActor(caption);
 		stage.addActor(sold2);
@@ -75,6 +80,13 @@ public class MenuScreen implements Screen{
 		stage.addActor(musicBtn);
 		stage.addActor(helpBtn);
 		stage.addActor(exitBtn);
+
+		if (!SpecialForces.getInstance().isAndroid()) {
+			stage.addActor(fullscreenBtn);
+		}else {
+			musicBtn.setX(513);
+			helpBtn.setX(666);
+		}
 
 		MoveToAction moveToAction = new MoveToAction();
 		moveToAction.setPosition(-30, -266);
@@ -200,6 +212,20 @@ public class MenuScreen implements Screen{
 		@Override
 		public void clicked(InputEvent event, float x, float y) {
 			Gdx.app.exit();
+		}
+	}
+
+	class FullScreenEvent extends ClickListener{
+		@Override
+		public void clicked(InputEvent event, float x, float y) {
+			if (Gdx.graphics.isFullscreen()){
+				Gdx.graphics.setWindowedMode(SpecialForces.WIDTH, SpecialForces.HEIGHT);
+			}else {
+				Graphics.Monitor currMonitor = Gdx.graphics.getMonitor();
+				Graphics.DisplayMode displayMode = Gdx.graphics.getDisplayMode(currMonitor);
+				Gdx.graphics.setFullscreenMode(displayMode);
+			}
+			SpecialForces.getInstance().screenManager().show(ScreenType.MENU);
 		}
 	}
 

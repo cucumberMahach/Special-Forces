@@ -140,10 +140,9 @@ public class Sounds {
 	}
 	
 	public void playShoot(Weapon weapon){
+		play("shoot".concat(String.valueOf(weapon.getType().ordinal())));
 		if (weapon.isEmpty())
 			play("empty");
-		else
-			play("shoot".concat(String.valueOf(weapon.getType().ordinal())));
 	}
 
 	public void playChange(Weapon weapon){

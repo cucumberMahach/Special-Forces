@@ -29,13 +29,13 @@ public class Help extends Group{
 		closeBtn.setPosition(getWidth() - closeBtn.getOriginX()*1.5f, getHeight() - closeBtn.getOriginY()*1.5f);
 		closeBtn.addListener(new CloseEvent(this));
 		
-		text = new Image(loader.getOther("helpText"));
+		text = new Image(SpecialForces.getInstance().isAndroid() ? loader.getOther("gameHelp_android") : loader.getOther("gameHelp_pc"));
 		final float cof = text.getWidth() / text.getHeight();
 		text.setSize(getHeight()*cof, getHeight());
 		text.setPosition(getOriginX(), getOriginY(), Align.center);
 		
 		caption = new Label(loader, "controls", Font.DEFAULT, Align.center, getOriginX(), 570, 0, 0);
-		addActor(caption);
+		//addActor(caption);
 		
 		addActor(background);
 		addActor(closeBtn);

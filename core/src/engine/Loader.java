@@ -32,6 +32,7 @@ import static engine.Style.MAPTILES_COUNT;
 
 public class Loader {
 
+	public static String DESKTOP_DIRECTORY = "android/assets/"; // if debug change to android/assets/ if build change to "" (desktop build to jar - desktop:dist)
 	public static String DIRECTORY;
 
 	private final String FONT_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789][_!$%#@|\\/?-+=()*&.;:,{}\"´`'<>";
@@ -61,7 +62,7 @@ public class Loader {
 	private Cursor cursor;
 
 	public Loader() {
-		DIRECTORY = Gdx.app.getType() == Application.ApplicationType.Desktop ? "android/assets/" : "";// bin
+		DIRECTORY = Gdx.app.getType() == Application.ApplicationType.Desktop ? DESKTOP_DIRECTORY : "";
 		assetManager = new AssetManager();
 		backgrounds = new HashMap<String, TextureRegion>();
 		captions = new HashMap<String, TextureRegion>();
@@ -133,7 +134,12 @@ public class Loader {
 		assetManager.load(DIRECTORY + "gfx/gui/contractInfo.png", Texture.class);
 		assetManager.load(DIRECTORY + "gfx/gui/faces.png", Texture.class);
 		assetManager.load(DIRECTORY + "gfx/gui/gui.png", Texture.class);
-		assetManager.load(DIRECTORY + "gfx/gui/help.png", Texture.class);
+
+		assetManager.load(DIRECTORY + "gfx/gui/editorHelp_android.png", Texture.class);
+		assetManager.load(DIRECTORY + "gfx/gui/editorHelp_pc.png", Texture.class);
+		assetManager.load(DIRECTORY + "gfx/gui/gameHelp_android.png", Texture.class);
+		assetManager.load(DIRECTORY + "gfx/gui/gameHelp_pc.png", Texture.class);
+
 		assetManager.load(DIRECTORY + "gfx/gui/icons.png", Texture.class);
 		assetManager.load(DIRECTORY + "gfx/gui/shadow.png", Texture.class);
 		assetManager.load(DIRECTORY + "gfx/gui/soldier1.png", Texture.class);
@@ -309,9 +315,14 @@ public class Loader {
 		icons.put("medal0", new TextureRegion(map, 0, 439, 307, 351));
 		icons.put("medal1", new TextureRegion(map, 307, 439, 307, 351));
 		icons.put("medal2", new TextureRegion(map, 614, 439, 307, 351));
+		icons.put("fullscreen", new TextureRegion(map, 857, 0, 64, 64));
 
 		// others
-		others.put("helpText", new TextureRegion(getTexture("gui/help.png")));
+		others.put("editorHelp_android", new TextureRegion(getTexture("gui/editorHelp_android.png")));
+		others.put("editorHelp_pc", new TextureRegion(getTexture("gui/editorHelp_pc.png")));
+		others.put("gameHelp_android", new TextureRegion(getTexture("gui/gameHelp_android.png")));
+		others.put("gameHelp_pc", new TextureRegion(getTexture("gui/gameHelp_pc.png")));
+
 		others.put("shadow", new TextureRegion(getTexture("gui/shadow.png")));
 		others.put("soldier1", new TextureRegion(getTexture("gui/soldier1.png")));
 		others.put("soldier2", new TextureRegion(getTexture("gui/soldier2.png")));

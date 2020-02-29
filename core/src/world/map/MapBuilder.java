@@ -72,7 +72,7 @@ public class MapBuilder {
 		int x, y;
 		for (y = 0; y < height; y++){
 			for (x = 0; x < width; x++){
-				tile = new Tile(loader.getMapTile((int) map[x + y * width].tile), x, height - y - 1, camera);
+				tile = new Tile(loader, map[x + y * width].tile, x, height - y - 1, camera);
 				group.addActor(tile);
 				tiles[x + y * width] = tile;
 			}

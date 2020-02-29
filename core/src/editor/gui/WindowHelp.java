@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 
 import engine.Loader;
+import engine.SpecialForces;
 import stages.Editor;
 import view.Font;
 import view.Group;
@@ -17,7 +18,7 @@ import view.gui.ButtonType;
 
 public class WindowHelp extends Group{
     private Editor editor;
-    private Image background;
+    private Image background, content;
     private Label captionLab;
     private Button closeBtn;
 
@@ -32,7 +33,11 @@ public class WindowHelp extends Group{
         closeBtn.setPosition(getWidth() - closeBtn.getWidth() - 10, getHeight() - closeBtn.getHeight() - 10);
         closeBtn.addListener(new CloseEvent(this));
 
+        content = new Image(SpecialForces.getInstance().isAndroid() ? loader.getOther("editorHelp_android") : loader.getOther("editorHelp_pc"));
+        content.setPosition(0,0);
+
         addActor(background);
+        addActor(content);
         addActor(captionLab);
         addActor(closeBtn);
 

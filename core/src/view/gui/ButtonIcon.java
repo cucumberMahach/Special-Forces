@@ -11,7 +11,8 @@ public enum ButtonIcon {
 	MUSIC("black_music"),
 	CLOSE("black_close"),
 	LOCATION("black_location"),
-	PLUS("black_plus");
+	PLUS("black_plus"),
+	FULLSCREEN("fullscreen");
 	
 	private final String name;
 	

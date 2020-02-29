@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
+import engine.Loader;
 import engine.Style;
 import view.Actor;
 
@@ -13,9 +14,15 @@ public class Tile extends Actor{
 	private OrthographicCamera camera;
 	private boolean inView;
 	
-	public Tile(TextureRegion texture, int x, int y, OrthographicCamera camera){
+	public Tile(Loader loader, char tile, int x, int y, OrthographicCamera camera){
 		this.camera = camera;
-		setTexture(texture);
+		if ((int) tile != 20){
+			texture = loader.getMapTile((int) tile);
+			setTexture(texture);
+		}else{
+			setTexture(null);
+			setSize(Style.TILE_SIZE, Style.TILE_SIZE);
+		}
 		setPosition(x * Style.TILE_SIZE, y * Style.TILE_SIZE);
 	}
 	
@@ -34,7 +41,7 @@ public class Tile extends Actor{
 	
 	@Override
 	public void draw(Batch batch, float parentAlpha) {
-		if (!inView)
+		if (!inView || texture == null)
 			return;
 		batch.draw(texture, getX(), getY(), Style.TILE_SIZE, Style.TILE_SIZE);
 	}

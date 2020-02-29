@@ -110,7 +110,7 @@ public class Manager {
 		if (firstLaunch) {
 			firstLaunch = false;
 			//editor.gui().showMessage("You can also send\nyour map to us");
-			editor.gui().showMessage("Resize blue zone - use\nupper right corner");
+			//editor.gui().showMessage("Resize blue zone - use\nupper right corner");
 		}
 	}
 	

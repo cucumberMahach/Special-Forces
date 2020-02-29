@@ -19,7 +19,7 @@ public class ImageArrayTuner extends Tuner implements Setable{
 		keys = new String[array.size()];
 		keys = array.keySet().toArray(keys);
 		
-		image = new Image(getTexture(0), getRight() + 35, getOriginY(), true);
+		image = new Image(getTexture(0), getRight() + 85, getOriginY(), true);
 		
 		setWidth(image.getRight());
 		setSetable(this);

@@ -51,7 +51,7 @@ public class Advertises implements AdHandler {
                 int visibility = adView.getVisibility();
                 adView.setVisibility(AdView.GONE);
                 adView.setVisibility(visibility);
-                Log.i(TAG, "Ad Loaded...");
+                Log.i(TAG, "(Ad) Banner Loaded...");
             }
         });
         adView.setAdSize(AdSize.BANNER);
@@ -76,9 +76,9 @@ public class Advertises implements AdHandler {
     private void doShowInterstitial() {
         if (interstitial.isLoaded()) {
             interstitial.show();
-            Log.d(TAG, "Interstitial is showing");
+            Log.d(TAG, "(Ad) Interstitial is showing");
         } else {
-            Log.d(TAG, "Interstitial ad is not loaded yet");
+            Log.d(TAG, "(Ad) Interstitial ad is not loaded yet");
         }
     }
 

@@ -30,7 +30,7 @@ public class HelpScreen implements Screen{
 		
 		caption = new Image(loader.getCaption("help"));
 		caption.setPosition(SpecialForces.WIDTH / 2 - caption.getWidth() / 2, 597);
-		text = new Image(loader.getOther("helpText"));
+		text = new Image(SpecialForces.getInstance().isAndroid() ? loader.getOther("gameHelp_android") : loader.getOther("gameHelp_pc"));
 		backBtn = new Button(loader, ButtonType.MENU_TEXT, "back", null);
 		backBtn.setPosition(867, 30);
 		backBtn.addListener(new BackEvent());
