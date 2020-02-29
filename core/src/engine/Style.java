@@ -28,7 +28,7 @@ public class Style {
 	public static final float			EDITOR_ICON_HEIGHT			= 48;
 	public static final float			EDITOR_OBJECT_ICONS_LINE	= 10;
 	public static final float			EDITOR_TILES_ICONS_LINE		= 9;
-	
+																		//teammate
 	public static final float			BOT_MAX_REACTION_DELAY		= 1; //after visible and before shoot
 	public static final float			BOT_MAX_STUCK_DELAY			= 3; //if position isn't changing (teleport to player)
 	public static final float			BOT_MAX_SHOOTING_DELAY		= 1; //if target isn't died (navigate to target)
@@ -75,12 +75,12 @@ public class Style {
 	public static final float			SHOTGUN_RANGE				= 5;
 	public static final int				MEDKIT_INCREASE				= 50;
 	public static final int				ENERGY_INCREASE				= 40;
-	
+																			//enemy
 	public static final int				ARRIVE_DISTANCE				= 2;
 	public static final float			VISIBLE_DISTANCE			= 400;
 	public static final float			MAX_VISIBLE_DISTANCE		= 1500;
 	public static final int				MAX_VISIBLE_DISTANCE_INT	= (int) (MAX_VISIBLE_DISTANCE / TILE_SIZE);
-	public static final float			REACTION_DELAY				= 0.2f;
+	public static final float			REACTION_DELAY				= 0.6f;
 	public static final float			SEARCH_TIME					= 15;
 	public static final float			NEAREST_DISTANCE			= 100;
 	public static final float			FARTHEST_DISTANCE			= 150;
