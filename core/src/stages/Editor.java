@@ -160,7 +160,7 @@ public class Editor extends Stage implements Tiled{
 			objects.addBot(x, y, 0, Style.VISIBLE_DISTANCE, 65, WeaponType.Beretta, 64);
 			break;
 		case ITEM:
-			objects.addItem(x, y, ItemType.values()[index-5], 0);
+			objects.addItem(x, y, ItemType.values()[index-5], -1);
 			break;
 		case PLAYER:
 			objects.addPlayer(x, y);

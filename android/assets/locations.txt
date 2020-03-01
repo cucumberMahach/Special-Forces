@@ -180,17 +180,28 @@
 	]
 }
 {
-	name: coming soon...
+	name: end of game
 	missions: [
 		{
-			name: mission 1
+			name: last map
 			maps: [
-				coming
+				last_map
 			]
 			dollarsReward: 6000
 			experienceReward: 400
-			markX: 400
-			markY: 395
+			markX: 550
+			markY: 320
+			status: LOCKED
+		}
+		{
+			name: credits
+			maps: [
+				credits
+			]
+			dollarsReward: 0
+			experienceReward: 0
+			markX: 770
+			markY: 320
 			status: LOCKED
 		}
 	]

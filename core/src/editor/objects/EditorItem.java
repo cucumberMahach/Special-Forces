@@ -22,7 +22,8 @@ public class EditorItem extends EditorObject{
 		}else {
 			setSize(getWidth() * 0.4f, getHeight() * 0.4f);
 			Weapon config = loader.getWeaponConfig(WeaponType.values()[type.ordinal()]);
-			setAmmo(config.getMaxAmmo() / 2);
+			if (ammo == -1)
+				setAmmo(config.getMaxAmmo() / 2);
 		}
 		setOrigin(Align.center);
 	}

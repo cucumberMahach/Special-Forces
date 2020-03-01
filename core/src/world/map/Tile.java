@@ -13,19 +13,18 @@ public class Tile extends Actor{
 	private TextureRegion texture;
 	private OrthographicCamera camera;
 	private boolean inView;
+	private char tile;
 	
 	public Tile(Loader loader, char tile, int x, int y, OrthographicCamera camera){
 		this.camera = camera;
-		if ((int) tile != 20){
+		this.tile = tile;
+		if (tile == 20)
+			texture = loader.getBlack();
+		else
 			texture = loader.getMapTile((int) tile);
-			setTexture(texture);
-		}else{
-			setTexture(null);
-			setSize(Style.TILE_SIZE, Style.TILE_SIZE);
-		}
 		setPosition(x * Style.TILE_SIZE, y * Style.TILE_SIZE);
 	}
-	
+
 	public void setTexture(TextureRegion texture){
 		this.texture = texture;
 	}
@@ -41,7 +40,7 @@ public class Tile extends Actor{
 	
 	@Override
 	public void draw(Batch batch, float parentAlpha) {
-		if (!inView || texture == null)
+		if (!inView /*|| tile == 20*/)
 			return;
 		batch.draw(texture, getX(), getY(), Style.TILE_SIZE, Style.TILE_SIZE);
 	}

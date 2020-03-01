@@ -58,6 +58,7 @@ public class Loader {
 	private ArrayList<TextureRegion> faces;
 	private ArrayList<String> names;
 	private TextureRegion mapTiles[];
+	private TextureRegion black;
 	private Weapon weapons[];
 	private Cursor cursor;
 
@@ -165,6 +166,7 @@ public class Loader {
 		assetManager.load(DIRECTORY + "gfx/weaponsTiles.png", Texture.class);
 
 		assetManager.load(DIRECTORY + "gfx/aim.png", Texture.class);
+		assetManager.load(DIRECTORY + "gfx/black.png", Texture.class);
 
 		assetManager.load(DIRECTORY + "sounds/character/damage1.mp3", Sound.class);
 		assetManager.load(DIRECTORY + "sounds/character/damage2.mp3", Sound.class);
@@ -382,6 +384,7 @@ public class Loader {
 			}
 		}
 
+		black = new TextureRegion(getTexture("black.png"));
 
 		// objects
 		map = getTexture("objects.png");
@@ -880,6 +883,10 @@ public class Loader {
 
 	public TextureRegion getMapTile(int index) {
 		return mapTiles[index];
+	}
+
+	public TextureRegion getBlack(){
+		return black;
 	}
 
 	public TextureRegion[] getCharacter(String key) {
