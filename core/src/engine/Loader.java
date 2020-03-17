@@ -236,6 +236,7 @@ public class Loader {
 		assetManager.load(DIRECTORY + "sounds/exp.mp3", Sound.class);
 		assetManager.load(DIRECTORY + "sounds/weapons/sniper_change.mp3", Sound.class);
 		assetManager.load(DIRECTORY + "music/menu.mp3", Music.class);
+		assetManager.load(DIRECTORY + "music/credits.mp3", Music.class);
 	}
 
 	public void loadPrev() {
@@ -578,6 +579,7 @@ public class Loader {
 
 		// music
 		music.put("menu", getMusic("menu.mp3"));
+		music.put("credits", getMusic("credits.mp3"));
 
 		// icons
 		map = getTexture("icons.png");

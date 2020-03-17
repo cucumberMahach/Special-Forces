@@ -12,6 +12,8 @@ public abstract class Manager {
 	private boolean toBuild, toExit, completed, active;
 	private Zone completeZone;
 	private ScreenType exitScreen;
+
+	private String mapName;
 	
 	public Manager(World world){
 		this.world = world;
@@ -19,12 +21,14 @@ public abstract class Manager {
 	}
 	
 	public void startMap(String mapName){
+		this.mapName = mapName;
 		world.map().freeMap();
 		world.map().load(mapName);
 		start();
 	}
 	
 	public void startMapFromString(String map){
+		mapName = "";
 		world.map().freeMap();
 		world.map().loadFromString(map);
 		start();
@@ -105,5 +109,9 @@ public abstract class Manager {
 	
 	public boolean isMapActive(){
 		return active;
+	}
+
+	protected String getMapName(){
+		return mapName;
 	}
 }

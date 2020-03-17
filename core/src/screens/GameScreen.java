@@ -84,6 +84,7 @@ public class GameScreen implements Screen{
 	public void hide() {
 		Gdx.graphics.setSystemCursor(Cursor.SystemCursor.Arrow);
 		Gdx.input.setInputProcessor(null);
+		SpecialForces.getInstance().sounds().stopAllMusic();
 	}
 
 	@Override

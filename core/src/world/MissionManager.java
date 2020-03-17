@@ -51,6 +51,7 @@ public class MissionManager extends Manager{
 		clean();
 		testMode = false;
 		nextMap();
+		world.creditsMode(getMapName().equals("credits"));
 		setPause(false);
 	}
 	
@@ -63,6 +64,7 @@ public class MissionManager extends Manager{
 		clean();
 		mapIndex++;
 		testMode = true;
+		world.creditsMode(false);
 		startMapFromString(map);
 		setPause(false);
 	}

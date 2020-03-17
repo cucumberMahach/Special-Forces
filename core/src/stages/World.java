@@ -28,6 +28,7 @@ import world.gameplay.Shoot;
 import world.gameplay.Weapon;
 import world.objects.MapObject;
 import world.objects.player.Player;
+import world.credits.CreditsGroup;
 
 public class World extends Stage implements Tiled{
 	private Map map;
@@ -40,6 +41,7 @@ public class World extends Stage implements Tiled{
 	private Debugger debugger;
 	private Gui gui;
 	private Zone completeZone;
+	private CreditsGroup creditsGroup;
 	
 	private float camRoomZoom, camZoom, camDifX, camDifY, camOffset, camStatX, camStatY;
 	private Point point;
@@ -61,14 +63,25 @@ public class World extends Stage implements Tiled{
 		manager = new MissionManager(this, loader);
 		multiplexer.addProcessor(this);
 		point = new Point();
-		
-		
+		creditsGroup = new CreditsGroup(this, loader);
+
 		addActor(map);
 		addActor(objects);
 		addActor(effects);
+		addActor(creditsGroup);
 		addActor(hud);
 		addActor(debugger);
 		addActor(gui);
+	}
+
+	public void creditsMode(boolean enable){
+		if (enable) {
+			getPlayer().removeGlobal();
+
+		}else{
+		}
+		hud.setVisible(!enable);
+		creditsGroup.enable(enable);
 	}
 	
 	@Override
@@ -89,6 +102,10 @@ public class World extends Stage implements Tiled{
 	public void moveBy(float x, float y){
 		camStatX += x;
 		camStatY += y;
+	}
+
+	public void moveTo(float x, float y){
+
 	}
 	
 	private float roomSizeTime;
