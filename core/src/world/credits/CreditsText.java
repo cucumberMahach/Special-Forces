@@ -13,11 +13,17 @@ public class CreditsText extends Group {
 
     private World world;
     private Label label;
+    private boolean enabled;
+
+    private float shiftY = 0;
 
     private String text = "Special Forces\n" +
             "\n" +
             "Developed by Middle Games\n" +
+            "in\n" +
             "2016 - 2020\n" +
+            "\n" +
+            "Alex Mah\n" +
             "\n" +
             "LibGDX framework";
 
@@ -29,7 +35,15 @@ public class CreditsText extends Group {
 
     @Override
     public void act(float delta) {
+        if (!enabled)
+            return;
+        label.setPosition(world.getCamera().position.x + 15, world.getCamera().position.y - 400 + shiftY);
+        shiftY += delta * 35;
         super.act(delta);
-        label.setPosition(world.getCamera().position.x+20, world.getCamera().position.y + 200);
+    }
+
+    public void enable(boolean enabled){
+        this.enabled = enabled;
+        shiftY = 0;
     }
 }

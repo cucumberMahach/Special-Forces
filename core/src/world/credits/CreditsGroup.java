@@ -14,6 +14,8 @@ public class CreditsGroup extends Group {
     private CreditsCameraController cameraController;
     private boolean enabled = false;
 
+    private float time = 0;
+
     public CreditsGroup(World world, Loader loader){
         this.world = world;
         text = new CreditsText(world, loader);
@@ -27,6 +29,11 @@ public class CreditsGroup extends Group {
             return;
         super.act(delta);
         cameraController.act(delta);
+        time += delta;
+        if (time >= 47){
+            time = 0;
+            enable(false);
+        }
     }
 
     @Override
@@ -38,6 +45,8 @@ public class CreditsGroup extends Group {
 
     public void enable(boolean enable){
         this.enabled = enable;
+        text.enable(enable);
+        cameraController.enable(enable);
         if (enable) {
             cameraController.clearAndPrepare();
             SpecialForces.getInstance().sounds().playMusic("credits", false);

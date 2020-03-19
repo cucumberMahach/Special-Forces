@@ -99,6 +99,8 @@ public abstract class MapObject extends Group{
 	public abstract void getDamage(float damage, boolean isExplosion);
 	
 	public void removeGlobal(){
+		if (getWorld() == null)
+			return;
 		getWorld().objects().remove(this);
 		super.remove();
 	}

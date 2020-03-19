@@ -51,7 +51,7 @@ public class MissionManager extends Manager{
 		clean();
 		testMode = false;
 		nextMap();
-		world.creditsMode(getMapName().equals("credits"));
+		world.creditsMode(isCreditsMode());
 		setPause(false);
 	}
 	
@@ -70,6 +70,8 @@ public class MissionManager extends Manager{
 	}
 	
 	private void spawnTeammates(Array<Soldier> teammates){
+		if (isCreditsMode())
+			return;
 		final float px = world.getPlayerX();
 		final float py = world.getPlayerY();
 		Teammate[] mates = new Teammate[teammates.size];

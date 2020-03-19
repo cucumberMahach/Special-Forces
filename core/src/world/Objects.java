@@ -12,6 +12,7 @@ import view.Actor;
 import view.Group;
 import world.objects.Item;
 import world.objects.MapObject;
+import world.objects.ObjectType;
 
 public class Objects extends Group{
 	
@@ -92,7 +93,8 @@ public class Objects extends Group{
 		while(!toSpawn.isEmpty()){
 			obj = toSpawn.pop();
 			mapObjects.add(obj);
-			addActor(obj);
+			if (!(obj.getType() == ObjectType.PLAYER && world.manager().isCreditsMode()))
+				addActor(obj);
 		}
 		sort();
 		world.map().refreshItems();

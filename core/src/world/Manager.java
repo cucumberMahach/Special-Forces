@@ -13,6 +13,8 @@ public abstract class Manager {
 	private Zone completeZone;
 	private ScreenType exitScreen;
 
+	private boolean creditsMode;
+
 	private String mapName;
 	
 	public Manager(World world){
@@ -24,6 +26,7 @@ public abstract class Manager {
 		this.mapName = mapName;
 		world.map().freeMap();
 		world.map().load(mapName);
+		creditsMode = getMapName().equals("credits");
 		start();
 	}
 	
@@ -31,6 +34,7 @@ public abstract class Manager {
 		mapName = "";
 		world.map().freeMap();
 		world.map().loadFromString(map);
+		creditsMode = false;
 		start();
 	}
 	
@@ -41,8 +45,10 @@ public abstract class Manager {
 		active = true;
 		world.hud().setVisibleTouchController(true);
 		Player player = world.getPlayer();
-		world.getOrtCam().position.x = player.getX();
-		world.getOrtCam().position.y = player.getY();
+		if (player != null) {
+			world.getOrtCam().position.x = player.getX();
+			world.getOrtCam().position.y = player.getY();
+		}
 		mapStarted();
 		mapBuilded();
 	}
@@ -109,6 +115,10 @@ public abstract class Manager {
 	
 	public boolean isMapActive(){
 		return active;
+	}
+
+	public boolean isCreditsMode(){
+		return creditsMode;
 	}
 
 	protected String getMapName(){
