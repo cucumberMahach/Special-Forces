@@ -23,9 +23,11 @@ public class CreditsText extends Group {
             "in\n" +
             "2016 - 2020\n" +
             "\n" +
-            "Alex Mah\n" +
+            "Alex Mahot\n" +
             "\n" +
-            "LibGDX framework";
+            "LibGDX framework\n" +
+            "Secret code:\n" +
+            "money99999";
 
     public CreditsText(World world, Loader loader){
         this.world = world;
@@ -38,7 +40,7 @@ public class CreditsText extends Group {
         if (!enabled)
             return;
         label.setPosition(world.getCamera().position.x + 15, world.getCamera().position.y - 400 + shiftY);
-        shiftY += delta * 35;
+        shiftY += delta * 38;
         super.act(delta);
     }
 

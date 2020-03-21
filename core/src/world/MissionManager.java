@@ -124,7 +124,7 @@ public class MissionManager extends Manager{
 		SpecialForces.getInstance().sounds().end();
 	}
 	
-	private void missionComplete(){
+	public void missionComplete(){
 		if (testMode){
 			exit();
 			return;

@@ -2,6 +2,7 @@ package screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Graphics;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -14,6 +15,7 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 
 import engine.Loader;
+import engine.PlayerData;
 import engine.SpecialForces;
 import stages.BackgroundStage;
 import view.Font;
@@ -28,7 +30,7 @@ public class MenuScreen implements Screen{
 	private Loader loader;
 	private Stage stage, bgrStage;
 	private Image caption, sold1, sold2, sold3, sold4;
-	private Button playBtn, editorBtn, musicBtn, helpBtn, exitBtn, fullscreenBtn;
+	private Button playBtn, editorBtn, musicBtn, helpBtn, exitBtn, fullscreenBtn, codeBtn;
 	private Label sendMapLab;
 	private boolean showFirstly = true;
 	private static final float BUTTON_SPACE = 20;
@@ -46,7 +48,7 @@ public class MenuScreen implements Screen{
 		sold3 = new Image(loader.getOther("soldier3"), 873 + 700, -320);
 		sold4 = new Image(loader.getOther("soldier4"), 1011 + 1000, -320);
 		playBtn = new Button(loader, ButtonType.MENU_TEXT, "play", null);
-		playBtn.setPosition(SpecialForces.WIDTH / 2 - playBtn.getWidth() / 2, 350);
+		playBtn.setPosition(SpecialForces.WIDTH / 2 - playBtn.getWidth() / 2, 360);//350
 		playBtn.addListener(new ScreenEvent(ScreenType.GENERAL));
 		
 		editorBtn = new Button(loader, ButtonType.MENU_TEXT, "map editor", null);
@@ -70,6 +72,10 @@ public class MenuScreen implements Screen{
 		helpBtn.setPosition(735, fullscreenBtn.getY());
 		helpBtn.addListener(new HelpEvent());
 
+		codeBtn = new Button(loader, ButtonType.MENU_TEXT, "enter code", null);
+		codeBtn.setPosition(editorBtn.getX(), helpBtn.getY() - codeBtn.getHeight() - BUTTON_SPACE);
+		codeBtn.addListener(new EnterCodeEvent());
+
 		stage.addActor(caption);
 		stage.addActor(sold2);
 		stage.addActor(sold1);
@@ -80,6 +86,7 @@ public class MenuScreen implements Screen{
 		stage.addActor(musicBtn);
 		stage.addActor(helpBtn);
 		stage.addActor(exitBtn);
+		stage.addActor(codeBtn);
 
 		if (!SpecialForces.getInstance().isAndroid()) {
 			stage.addActor(fullscreenBtn);
@@ -226,6 +233,40 @@ public class MenuScreen implements Screen{
 				Gdx.graphics.setFullscreenMode(displayMode);
 			}
 			SpecialForces.getInstance().screenManager().show(ScreenType.MENU);
+		}
+	}
+
+	class EnterCodeEvent extends ClickListener{
+		@Override
+		public void clicked(InputEvent event, float x, float y) {
+
+			EnterCodeInputListener listener = new EnterCodeInputListener();
+			Gdx.input.getTextInput(listener, "Enter secret code", "", "");
+
+			super.clicked(event, x, y);
+		}
+	}
+
+	public class EnterCodeInputListener implements Input.TextInputListener {
+		@Override
+		public void input (String text) {
+			try {
+				String word = text.substring(0, 5); //money500
+				if (word.equals("money")) {
+					String number = text.substring(5, text.length());
+					int money = Integer.parseInt(number);
+
+					PlayerData pd = SpecialForces.getInstance().playerData();
+					pd.changeDollars(money);
+					pd.save();
+
+					SpecialForces.getInstance().sounds().buy();
+				}
+			}catch (Exception ex){};
+		}
+
+		@Override
+		public void canceled () {
 		}
 	}
 

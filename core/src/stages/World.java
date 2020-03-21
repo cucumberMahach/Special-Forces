@@ -77,8 +77,6 @@ public class World extends Stage implements Tiled{
 	public void creditsMode(boolean enable){
 		if (enable) {
 			getPlayer().removeGlobal();
-		}else{
-
 		}
 		hud.setVisible(!enable);
 		creditsGroup.enable(enable);

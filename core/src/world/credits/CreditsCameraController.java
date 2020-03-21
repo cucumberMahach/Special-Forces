@@ -6,7 +6,6 @@ public class CreditsCameraController {
 
     private World world;
     private boolean enabled = false;
-    private boolean started = false;
     private float elapsed;
     private float movedByY = 0;
 
@@ -17,10 +16,6 @@ public class CreditsCameraController {
     public void act(float delta){
         if (!enabled)
             return;
-        if (!started){
-            started = true;
-            start();
-        }
         if (elapsed > 0.1f) {
             elapsed = 0;
             world.moveBy(0, 0.3f);
@@ -29,12 +24,7 @@ public class CreditsCameraController {
         elapsed += delta;
     }
 
-    public void start(){
-
-    }
-
     public void clearAndPrepare(){
-        started = false;
         elapsed = 0;
     }
 
@@ -42,5 +32,9 @@ public class CreditsCameraController {
         this.enabled = enabled;
         world.moveBy(0, -movedByY);
         movedByY = 0;
+    }
+
+    public void stop(){
+        this.enabled = false;
     }
 }

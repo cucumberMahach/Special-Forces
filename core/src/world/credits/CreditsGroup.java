@@ -13,6 +13,7 @@ public class CreditsGroup extends Group {
     private CreditsText text;
     private CreditsCameraController cameraController;
     private boolean enabled = false;
+    private boolean musicPlayed = false;
 
     private float time = 0;
 
@@ -30,9 +31,13 @@ public class CreditsGroup extends Group {
         super.act(delta);
         cameraController.act(delta);
         time += delta;
-        if (time >= 47){
+        if (time >= 46){
             time = 0;
-            enable(false);
+            stop();
+        }
+        if (!musicPlayed && time > 1f){
+            musicPlayed = true;
+            SpecialForces.getInstance().sounds().playMusic("credits", false);
         }
     }
 
@@ -44,12 +49,20 @@ public class CreditsGroup extends Group {
     }
 
     public void enable(boolean enable){
+        time = 0;
+        musicPlayed = false;
         this.enabled = enable;
         text.enable(enable);
         cameraController.enable(enable);
         if (enable) {
             cameraController.clearAndPrepare();
-            SpecialForces.getInstance().sounds().playMusic("credits", false);
         }
+    }
+
+    public void stop(){
+        this.enabled = false;
+        text.enable(false);
+        cameraController.stop();
+        world.manager().missionComplete();
     }
 }

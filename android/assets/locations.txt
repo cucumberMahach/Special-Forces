@@ -189,7 +189,7 @@
 			]
 			dollarsReward: 6000
 			experienceReward: 400
-			markX: 550
+			markX: 500
 			markY: 320
 			status: LOCKED
 		}
@@ -200,7 +200,7 @@
 			]
 			dollarsReward: 0
 			experienceReward: 0
-			markX: 770
+			markX: 820
 			markY: 320
 			status: LOCKED
 		}
