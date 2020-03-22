@@ -150,6 +150,7 @@ public class MissionManager extends Manager{
 		}else {
 			super.exit(ScreenType.GENERAL);
 		}
+		SpecialForces.getInstance().adverts().showAd();
 	}
 	
 	public Mission getMission(){

@@ -202,7 +202,7 @@
 			experienceReward: 0
 			markX: 820
 			markY: 320
-			status: LOCKED
+			status: AVAILABLE
 		}
 	]
 }

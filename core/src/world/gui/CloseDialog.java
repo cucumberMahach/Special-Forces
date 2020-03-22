@@ -4,6 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 
+import engine.CursorType;
 import engine.Loader;
 import engine.SpecialForces;
 import stages.World;
@@ -48,6 +49,8 @@ public class CloseDialog extends Group{
 		world.setPause(false);
 		if (action)
 			world.manager().exit();
+		else
+			SpecialForces.getInstance().cursors().setCursor(CursorType.AIM);
 		setVisible(false);
 	}
 	
@@ -56,6 +59,7 @@ public class CloseDialog extends Group{
 			return;
 		world.setPause(true);
 		setVisible(true);
+		SpecialForces.getInstance().cursors().setCursor(CursorType.ARROW);
 	}
 	
 }

@@ -23,11 +23,11 @@ public class CreditsText extends Group {
             "in\n" +
             "2016 - 2020\n" +
             "\n" +
-            "Alex Mahot\n" +
+            "Alex Makhotkin\n" +
             "\n" +
             "LibGDX framework\n" +
             "\n" +
-            "Secret code:\n" +
+            "Cheat code:\n" +
             "money99999";
 
     public CreditsText(World world, Loader loader){

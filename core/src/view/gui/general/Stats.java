@@ -16,7 +16,7 @@ public class Stats extends Group{
 		dollars = new Image(loader.getIcon("dollars"));
 		dollars.setPosition(0, 60);
 		
-		dollarsLab = new Label(loader, "0", Font.NUMBERS, Align.left, dollars.getRight() + 15, dollars.getCenterY(), 0, 0);
+		dollarsLab = new Label(loader, "0", Font.NUMBERS, Align.left, dollars.getRight(), dollars.getCenterY(), 0, 0);
 		dollarsLab.moveBy(0, -dollarsLab.getHeight()/3);
 		
 		addActor(dollars);

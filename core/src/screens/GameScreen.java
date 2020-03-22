@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 
+import engine.CursorType;
 import engine.Loader;
 import engine.PlayerData;
 import engine.SpecialForces;
@@ -48,7 +49,7 @@ public class GameScreen implements Screen{
 
 	@Override
 	public void show() {
-		Gdx.graphics.setCursor(loader.getCursor());
+		SpecialForces.getInstance().cursors().setCursor(CursorType.AIM);
 		Gdx.input.setInputProcessor(multiplexer);
 		if (gameType == GameType.MISSION){
 			world.manager().startMission(missionCfg, playerData);
@@ -82,7 +83,7 @@ public class GameScreen implements Screen{
 
 	@Override
 	public void hide() {
-		Gdx.graphics.setSystemCursor(Cursor.SystemCursor.Arrow);
+		SpecialForces.getInstance().cursors().setCursor(CursorType.ARROW);
 		Gdx.input.setInputProcessor(null);
 		SpecialForces.getInstance().sounds().stopAllMusic();
 	}

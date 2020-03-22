@@ -184,6 +184,11 @@ public class World extends Stage implements Tiled{
 	
 	public void setPause(boolean pause){
 		this.pause = pause;
+		if (pause){
+			SpecialForces.getInstance().sounds().pauseAllPlayedMusic();
+		}else{
+			SpecialForces.getInstance().sounds().restoreAllPlayedMusic();
+		}
 	}
 	
 	public Player getPlayer(){

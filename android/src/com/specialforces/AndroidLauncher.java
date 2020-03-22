@@ -1,10 +1,7 @@
 package com.specialforces;
 
 import android.os.Bundle;
-import android.os.Looper;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
@@ -39,7 +36,7 @@ public class AndroidLauncher extends AndroidApplication {
 		layout.addView(advertises.getAdView(), adParams);
 		setContentView(layout);
 
-		SpecialForces.getInstance().setAdHandler(advertises);
+		SpecialForces.getInstance().createAdverts(advertises);
 	}
 
 

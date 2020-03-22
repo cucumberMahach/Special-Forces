@@ -60,7 +60,7 @@ public class Loader {
 	private TextureRegion mapTiles[];
 	private TextureRegion black;
 	private Weapon weapons[];
-	private Cursor cursor;
+	private HashMap<String, Cursor> cursors;
 
 	public Loader() {
 		DIRECTORY = Gdx.app.getType() == Application.ApplicationType.Desktop ? DESKTOP_DIRECTORY : "";
@@ -72,6 +72,7 @@ public class Loader {
 		names = new ArrayList<String>();
 		music = new HashMap<String, Music>();
 		dynamicParticles = new HashMap<String, TextureRegion[]>();
+		cursors = new HashMap<>();
 
 		fonts = new EnumMap<Font, BitmapFont>(Font.class);
 		characters = new HashMap<String, TextureRegion[]>();
@@ -116,7 +117,8 @@ public class Loader {
 		 * files) assetManager.load(file, file.endsWith("mp3") ? Sound.class :
 		 * Texture.class);
 		 */
-		assetManager.load(DIRECTORY + "gfx/cursor.png", Texture.class);
+		assetManager.load(DIRECTORY + "gfx/cursor_aim.png", Texture.class);
+		assetManager.load(DIRECTORY + "gfx/cursor_arrow.png", Texture.class);
 		assetManager.load(DIRECTORY + "gfx/fire.png", Texture.class);
 		assetManager.load(DIRECTORY + "gfx/fx.png", Texture.class);
 		assetManager.load(DIRECTORY + "gfx/feets.png", Texture.class);
@@ -597,7 +599,7 @@ public class Loader {
 		loadWeaponsConfig();
 
 		// cursor
-		loadCursor();
+		loadCursors();
 
 		// names
 		loadNames();
@@ -653,15 +655,21 @@ public class Loader {
 		names.add("jake");
 	}
 
-	private void loadCursor() {
-		Texture tex = getTexture("cursor.png");
-		Pixmap pix = new Pixmap(32, 32, Format.RGBA8888);
+	private void loadCursors() {
+		cursors.put("aim", generateCursor(getTexture("cursor_aim.png"), 32, 32, 16, 16));
+		cursors.put("arrow", generateCursor(getTexture("cursor_arrow.png"), 26, 38, 0, 0));
+	}
 
-		tex.getTextureData().prepare();
-		pix = tex.getTextureData().consumePixmap();
+	private Cursor generateCursor(Texture texture, int width, int height, int xHotspot, int yHotspot){
+		Pixmap pix;
 
-		cursor = Gdx.graphics.newCursor(pix, 16, 16);
+		texture.getTextureData().prepare();
+		pix = texture.getTextureData().consumePixmap();
+
+		Cursor cursor = Gdx.graphics.newCursor(pix, xHotspot, yHotspot);
 		pix.dispose();
+
+		return cursor;
 	}
 
 	private void loadWeaponsConfig() {
@@ -808,8 +816,8 @@ public class Loader {
 		return gui.get(key);
 	}
 
-	public Cursor getCursor() {
-		return cursor;
+	public Cursor getCursor(String name) {
+		return cursors.get(name);
 	}
 
 	public int getItemsCount() {

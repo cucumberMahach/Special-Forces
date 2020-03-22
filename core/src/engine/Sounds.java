@@ -6,6 +6,7 @@ import java.util.Map.Entry;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.math.MathUtils;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import world.gameplay.Weapon;
 import world.gameplay.WeaponType;
@@ -17,6 +18,7 @@ public class Sounds {
 	private boolean musicEnabled = true;
 	
 	private HashMap<Integer, String> tileSounds;
+	private HashMap<Music, Boolean> isPlayedMusic = new HashMap<>();
 	
 	public Sounds(Loader loader){
 		sounds = loader.getSounds();
@@ -62,6 +64,7 @@ public class Sounds {
 	}
 	
 	public void stopAllMusic(){
+		isPlayedMusic.clear();
 		for (Entry<String, Music> entry: music.entrySet())
 			entry.getValue().stop();
 	}
@@ -69,6 +72,21 @@ public class Sounds {
 	public void setVolumeAllMusic(float value){
 		for (Entry<String, Music> entry: music.entrySet())
 			entry.getValue().setVolume(value);
+	}
+
+	public void pauseAllPlayedMusic(){
+		isPlayedMusic.clear();
+		for (Entry<String, Music> musicEntry: music.entrySet()){
+			isPlayedMusic.put(musicEntry.getValue(), musicEntry.getValue().isPlaying());
+			musicEntry.getValue().pause();
+		}
+	}
+
+	public void restoreAllPlayedMusic(){
+		for (Entry<Music, Boolean> entry: isPlayedMusic.entrySet()){
+			if (entry.getValue())
+				entry.getKey().play();
+		}
 	}
 	
 	public void complete(){

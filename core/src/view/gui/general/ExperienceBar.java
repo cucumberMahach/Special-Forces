@@ -33,9 +33,8 @@ public class ExperienceBar extends ProgressBar{
 		exp = value;
 		if (value > maxExp)
 			calcMaxExperience(value);
-		experienceLab.setCaption(String.valueOf(value) + " / " + String.valueOf(maxExp));
+		experienceLab.setCaption(value + " / " + maxExp);
 		setProgress(1f / needNow * (needNow-(maxExp-value)));
-		SpecialForces.getInstance().sounds().experience();
 	}
 	
 	private void calcMaxExperience(int exp){

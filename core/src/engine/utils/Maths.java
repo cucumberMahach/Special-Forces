@@ -11,6 +11,11 @@ public class Maths {
 	private static Tiled tiled;
 	private static Vector2 tmpVector = new Vector2();
 
+	public static boolean RandomChance(int percent){
+		float value = percent / 100f;
+		return MathUtils.random() > (1 - value);
+	}
+
 	public static float FPSCompensation(){
 		return (float) SpecialForces.FPS / Gdx.graphics.getFramesPerSecond();
 	}

@@ -36,7 +36,8 @@ public class SpecialForces extends Game {
 	private Sounds sounds;
 	private Loader loader;
 	private PlayerData playerData;
-	private AdHandler adHandler;
+	private Adverts adverts;
+	private Cursors cursors;
 	
 	private SpecialForces() {}
 
@@ -50,6 +51,7 @@ public class SpecialForces extends Game {
 		scrMng = new ScreenManager(loader, batch);
 		playerData = new PlayerData();
 		sounds = new Sounds(loader);
+		cursors = new Cursors(loader);
 		
 		loader.loadPrev();
 		screenManager().loadPrev();
@@ -110,12 +112,17 @@ public class SpecialForces extends Game {
 		return shaper;
 	}
 
-	public void setAdHandler(AdHandler adHandler){
-		this.adHandler = adHandler;
+	public void createAdverts(AdHandler adHandler){
+		adverts = new Adverts();
+		adverts.setAdHandler(adHandler);
 	}
 
-	public AdHandler getAdHandler(){
-		return adHandler;
+	public Adverts adverts(){
+		return adverts;
+	}
+
+	public Cursors cursors(){
+		return cursors;
 	}
 	
 	public static SpecialForces getInstance(){

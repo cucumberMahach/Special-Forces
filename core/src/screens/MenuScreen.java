@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 
+import engine.CursorType;
 import engine.Loader;
 import engine.PlayerData;
 import engine.SpecialForces;
@@ -48,7 +49,7 @@ public class MenuScreen implements Screen{
 		sold3 = new Image(loader.getOther("soldier3"), 873 + 700, -320);
 		sold4 = new Image(loader.getOther("soldier4"), 1011 + 1000, -320);
 		playBtn = new Button(loader, ButtonType.MENU_TEXT, "play", null);
-		playBtn.setPosition(SpecialForces.WIDTH / 2 - playBtn.getWidth() / 2, 360);//350
+		playBtn.setPosition(SpecialForces.WIDTH / 2 - playBtn.getWidth() / 2, 350);//350
 		playBtn.addListener(new ScreenEvent(ScreenType.GENERAL));
 		
 		editorBtn = new Button(loader, ButtonType.MENU_TEXT, "map editor", null);
@@ -140,6 +141,7 @@ public class MenuScreen implements Screen{
 	public void show() {
 		updateGui();
 		Gdx.input.setInputProcessor(stage);
+		SpecialForces.getInstance().cursors().setCursor(CursorType.ARROW);
 		SpecialForces.getInstance().sounds().playMusic("menu", true);
 		if (showFirstly)
 			showFirstly = false;
@@ -237,23 +239,43 @@ public class MenuScreen implements Screen{
 	}
 
 	class EnterCodeEvent extends ClickListener{
+
+		private boolean closed = true;
+
 		@Override
 		public void clicked(InputEvent event, float x, float y) {
+			if (!closed)
+				return;
 
-			EnterCodeInputListener listener = new EnterCodeInputListener();
-			Gdx.input.getTextInput(listener, "Enter secret code", "", "");
+			EnterCodeInputListener listener = new EnterCodeInputListener(this);
+			Gdx.input.getTextInput(listener, "Enter cheat code", "", "");
+
+			closed = false;
 
 			super.clicked(event, x, y);
+		}
+
+		public void closed(){
+			closed = true;
 		}
 	}
 
 	public class EnterCodeInputListener implements Input.TextInputListener {
+
+		private EnterCodeEvent event;
+
+		public EnterCodeInputListener(EnterCodeEvent event){
+			this.event = event;
+		}
+
 		@Override
 		public void input (String text) {
+			event.closed();
 			try {
-				String word = text.substring(0, 5); //money500
+				String word = text.substring(0, 5).toLowerCase(); //money500
+
 				if (word.equals("money")) {
-					String number = text.substring(5, text.length());
+					String number = text.substring(5);
 					int money = Integer.parseInt(number);
 
 					PlayerData pd = SpecialForces.getInstance().playerData();
@@ -267,6 +289,7 @@ public class MenuScreen implements Screen{
 
 		@Override
 		public void canceled () {
+			event.closed();
 		}
 	}
 
