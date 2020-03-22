@@ -72,8 +72,8 @@ public class MenuScreen implements Screen{
 		helpBtn.setPosition(735, fullscreenBtn.getY());
 		helpBtn.addListener(new HelpEvent());
 
-		codeBtn = new Button(loader, ButtonType.MENU_TEXT, "enter code", null);
-		codeBtn.setPosition(editorBtn.getX(), helpBtn.getY() - codeBtn.getHeight() - BUTTON_SPACE);
+		codeBtn = new Button(loader, ButtonType.SMALL_RED, "", ButtonIcon.CODE);
+		codeBtn.setPosition(82 - codeBtn.getWidth(), 641);
 		codeBtn.addListener(new EnterCodeEvent());
 
 		stage.addActor(caption);

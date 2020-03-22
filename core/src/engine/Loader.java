@@ -319,6 +319,7 @@ public class Loader {
 		icons.put("medal1", new TextureRegion(map, 307, 439, 307, 351));
 		icons.put("medal2", new TextureRegion(map, 614, 439, 307, 351));
 		icons.put("fullscreen", new TextureRegion(map, 857, 0, 64, 64));
+		icons.put("code", new TextureRegion(map, 508, 0, 44, 37));
 
 		// others
 		others.put("editorHelp_android", new TextureRegion(getTexture("gui/editorHelp_android.png")));

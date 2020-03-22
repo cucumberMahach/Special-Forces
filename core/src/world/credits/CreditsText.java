@@ -26,6 +26,7 @@ public class CreditsText extends Group {
             "Alex Mahot\n" +
             "\n" +
             "LibGDX framework\n" +
+            "\n" +
             "Secret code:\n" +
             "money99999";
 
@@ -39,8 +40,8 @@ public class CreditsText extends Group {
     public void act(float delta) {
         if (!enabled)
             return;
-        label.setPosition(world.getCamera().position.x + 15, world.getCamera().position.y - 400 + shiftY);
-        shiftY += delta * 38;
+        label.setPosition(world.getCamera().position.x + 3, world.getCamera().position.y - 400 + shiftY);
+        shiftY += delta * 43;
         super.act(delta);
     }
 
