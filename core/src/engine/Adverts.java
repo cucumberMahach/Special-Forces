@@ -11,7 +11,7 @@ import engine.utils.advertise.AdHandler;
 
 public class Adverts {
 
-    public static final int SHOW_AD_INTERVAL_SEC = 1;
+    public static final int SHOW_AD_INTERVAL_SEC = 40;
 
     private AdHandler ads;
 
@@ -24,12 +24,11 @@ public class Adverts {
     public void showAd(){
         long time = new Date().getTime();
         long after = SHOW_AD_INTERVAL_SEC * 1000 - (time - lastShowTime);
-        System.out.println("LG: " + after);
         if (after <= 0){
             lastShowTime = time;
+            ads.loadAd();
             ads.showAd();
             ads.loadAd();
-
         }
     }
 

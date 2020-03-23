@@ -76,9 +76,9 @@ public class Advertises implements AdHandler {
     private void doShowInterstitial() {
         if (interstitial.isLoaded()) {
             interstitial.show();
-            Log.d(TAG, "(Ad) Interstitial is showing");
+            Log.d(TAG, "(Ads) Interstitial is showing");
         } else {
-            Log.d(TAG, "(Ad) Interstitial ad is not loaded yet");
+            Log.d(TAG, "(Ads) Interstitial ad is not loaded yet");
         }
     }
 
