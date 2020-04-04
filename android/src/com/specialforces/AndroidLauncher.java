@@ -36,7 +36,7 @@ public class AndroidLauncher extends AndroidApplication {
 		layout.addView(advertises.getAdView(), adParams);*/
 		setContentView(layout);
 
-		SpecialForces.getInstance().createAdverts(advertises);
+		SpecialForces.getInstance().setAdHandler(advertises);
 	}
 
 

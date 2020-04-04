@@ -52,6 +52,7 @@ public class SpecialForces extends Game {
 		playerData = new PlayerData();
 		sounds = new Sounds(loader);
 		cursors = new Cursors(loader);
+		adverts = new Adverts();
 		
 		loader.loadPrev();
 		screenManager().loadPrev();
@@ -112,8 +113,7 @@ public class SpecialForces extends Game {
 		return shaper;
 	}
 
-	public void createAdverts(AdHandler adHandler){
-		adverts = new Adverts();
+	public void setAdHandler(AdHandler adHandler){
 		adverts.setAdHandler(adHandler);
 	}
 

@@ -32,7 +32,7 @@ import static engine.Style.MAPTILES_COUNT;
 
 public class Loader {
 
-	public static String DESKTOP_DIRECTORY = "android/assets/"; // if debug change to android/assets/ if build change to "" (desktop build to jar - desktop:dist)
+	public static String DESKTOP_DIRECTORY = ""; // if debug change to android/assets/ if build change to "" (desktop build to jar - desktop:dist)
 	public static String DIRECTORY;
 
 	private final String FONT_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789][_!$%#@|\\/?-+=()*&.;:,{}\"´`'<>";

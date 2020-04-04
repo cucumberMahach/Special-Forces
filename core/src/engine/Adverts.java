@@ -22,6 +22,8 @@ public class Adverts {
     }
 
     public void showAd(){
+        if (ads == null)
+            return;
         long time = new Date().getTime();
         long after = SHOW_AD_INTERVAL_SEC * 1000 - (time - lastShowTime);
         if (after <= 0){
