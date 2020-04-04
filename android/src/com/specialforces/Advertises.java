@@ -22,7 +22,7 @@ public class Advertises implements AdHandler {
     static final int HIDE_ADS = 0;
 
     private AndroidApplication context;
-    private AdView adView;
+    //private AdView adView;
     private InterstitialAd interstitial;
     private AdRequest.Builder builder;
 
@@ -44,7 +44,7 @@ public class Advertises implements AdHandler {
         interstitial.loadAd(builder.build());
 
         //banner
-        adView = new AdView(context);
+        /*adView = new AdView(context);
         adView.setAdListener(new AdListener() {
             @Override
             public void onAdLoaded() {
@@ -59,7 +59,7 @@ public class Advertises implements AdHandler {
         adView.loadAd(builder.build());
 
         adsViewHandler = new AdsViewHandler(adView);
-        showBanner(false);
+        showBanner(false);*/
     }
 
     private void showInterstitial() {
@@ -117,8 +117,8 @@ public class Advertises implements AdHandler {
         return builder;
     }
 
-    public AdView getAdView(){
+    /*public AdView getAdView(){
         return adView;
-    }
+    }*/
 
 }

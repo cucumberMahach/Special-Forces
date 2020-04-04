@@ -11,7 +11,7 @@ import engine.utils.advertise.AdHandler;
 
 public class Adverts {
 
-    public static final int SHOW_AD_INTERVAL_SEC = 40;
+    public static final int SHOW_AD_INTERVAL_SEC = 100;//40
 
     private AdHandler ads;
 
@@ -28,7 +28,6 @@ public class Adverts {
             lastShowTime = time;
             ads.loadAd();
             ads.showAd();
-            ads.loadAd();
         }
     }
 

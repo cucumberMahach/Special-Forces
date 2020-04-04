@@ -27,13 +27,13 @@ public class AndroidLauncher extends AndroidApplication {
 		advertises = new Advertises(this);
 
 
-		RelativeLayout.LayoutParams adParams = new RelativeLayout.LayoutParams(
+		/*RelativeLayout.LayoutParams adParams = new RelativeLayout.LayoutParams(
 				RelativeLayout.LayoutParams.WRAP_CONTENT,
 				RelativeLayout.LayoutParams.WRAP_CONTENT
 		);
 		adParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
 		adParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-		layout.addView(advertises.getAdView(), adParams);
+		layout.addView(advertises.getAdView(), adParams);*/
 		setContentView(layout);
 
 		SpecialForces.getInstance().createAdverts(advertises);
